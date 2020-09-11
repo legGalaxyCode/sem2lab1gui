@@ -13,13 +13,10 @@ Dialog::Dialog(QWidget* parent) : QWidget(parent) {
 
     p_DCheck = new QRadioButton("Dijkstra algorithm");
     p_DCheck->setChecked(true);
-    connect(p_DCheck, SIGNAL(clicked()), this, SLOT(slotDBtn()));
 
     p_BFCheck = new QRadioButton("Bellman-Ford algorithm");
-    connect(p_BFCheck, SIGNAL(clicked()), this, SLOT(slotBellmanFordBtn()));
 
     p_FUCheck = new QRadioButton("Floyd-Uorshell algorithm");
-    connect(p_FUCheck, SIGNAL(clicked()), this, SLOT(slotFloydUorshellBtn()));
 
     p_binType = new QRadioButton("Binary file");
     p_binType->setChecked(true);
@@ -65,9 +62,6 @@ void Dialog::closeEvent(QCloseEvent *event) {
 }
 
 void Dialog::slotStartBtn() {
-    //QString strToSave = QFileDialog::getExistingDirectory(nullptr,
-    //                                                     "Directory Dialog",
-    //                                                      "");
     if (checkValidWidget == 0) {
         QString strFilter;
         if (p_binType->isChecked()) {
@@ -75,29 +69,91 @@ void Dialog::slotStartBtn() {
         } else if (p_txtType->isChecked()) {
             strFilter = "*.txt";
         }
-        QString strToSave = QFileDialog::getSaveFileName(nullptr,
-                                                         tr("Save file"),
-                                                         "Graph " + QDateTime::currentDateTime().toString(),
-                                                         strFilter,
-                                                         &strFilter);
-        QFile file(strToSave);
-        /*model->generateGraph(); //graph generates
         if (p_DCheck->isChecked()) {
+            model->generateGraph(); //graph generates
+            auto tempGraphOut = model->getGraph(); // ???
+            auto myV = model->sizeGraph().first;
+            auto myE = model->sizeGraph().second;
+
+            QString strToSave = QFileDialog::getSaveFileName(nullptr,
+                                                             tr("Save file"),
+                                                             "Graph " + QDateTime::currentDateTime().toString(),
+                                                             strFilter,
+                                                             &strFilter);
+            QFile file(strToSave);
+            file.open(QIODevice::ReadWrite);
+            QTextStream out(&file);
+            out << "Vertex: " << myV << "\n";
+            out << "Edges: " << myE << "\n";
+            for (auto it = 0; it < myV; ++it) {
+                for (auto ot = 0; ot < tempGraphOut[it].size(); ++ot) {
+                    out << it << "  " << tempGraphOut[it][ot].first << ",   " << tempGraphOut[it][ot].second << "\n";
+                }
+            }
+            file.close();
+            QMessageBox msgBox; msgBox.setText("Graph generation complete"); msgBox.exec();
             model->Dijkstra();
+            msgBox.setText("Dijkstra completed"); msgBox.exec();
             //input in file like:
             //file.open(QIODevice::ReadWrite);
             //file.close();
         } else if (p_BFCheck->isChecked()) {
+            model->generateGraph(); //graph generates
+            auto tempGraphOut = model->getGraph(); // ???
+            auto myV = model->sizeGraph().first;
+            auto myE = model->sizeGraph().second;
+
+            QString strToSave = QFileDialog::getSaveFileName(nullptr,
+                                                             tr("Save file"),
+                                                             "Graph " + QDateTime::currentDateTime().toString(),
+                                                             strFilter,
+                                                             &strFilter);
+            QFile file(strToSave);
+            file.open(QIODevice::ReadWrite);
+            QTextStream out(&file);
+            out << "Vertex: " << myV << "\n";
+            out << "Edges: " << myE << "\n";
+            for (auto it = 0; it < myV; ++it) {
+                for (auto ot = 0; ot < tempGraphOut[it].size(); ++ot) {
+                    out << it << "  " << tempGraphOut[it][ot].first << ",   " << tempGraphOut[it][ot].second << "\n";
+                }
+            }
+            file.close();
+            QMessageBox msgBox; msgBox.setText("Graph generation complete"); msgBox.exec();
             model->BellmanFord();
+            msgBox.setText("Bellman-Ford completed"); msgBox.exec();
             //input in file like:
             //file.open(QIODevice::ReadWrite);
             //file.close();
         } else if (p_FUCheck->isChecked()) {
+            model->generateGraph(); //graph generates
+            auto tempGraphOut = model->getGraph(); // ???
+            auto myV = model->sizeGraph().first;
+            auto myE = model->sizeGraph().second;
+
+            QString strToSave = QFileDialog::getSaveFileName(nullptr,
+                                                             tr("Save file"),
+                                                             "Graph " + QDateTime::currentDateTime().toString(),
+                                                             strFilter,
+                                                             &strFilter);
+            QFile file(strToSave);
+            file.open(QIODevice::ReadWrite);
+            QTextStream out(&file);
+            out << "Vertex: " << myV << "\n";
+            out << "Edges: " << myE << "\n";
+            for (auto it = 0; it < myV; ++it) {
+                for (auto ot = 0; ot < tempGraphOut[it].size(); ++ot) {
+                    out << it << "  " << tempGraphOut[it][ot].first << ",   " << tempGraphOut[it][ot].second << "\n";
+                }
+            }
+            file.close();
+            QMessageBox msgBox; msgBox.setText("Graph generation complete"); msgBox.exec();
             model->FloydUorshell();
+            msgBox.setText("Floyd-Uorshell completed"); msgBox.exec();
             //input in file like:
             //file.open(QIODevice::ReadWrite);
             //file.close();
-        }*/
+        }
     } else if (checkValidWidget == 1) {
         QString strFilter;
         if (p_binType->isChecked()) {

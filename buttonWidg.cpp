@@ -1,8 +1,8 @@
 #include<buttonWidg.h>
 
 Widget::Widget(QWidget* parent) : QWidget(parent) {
-    dialog = new Dialog; //move in constructor
-    dialog->setFixedSize(333, 220); //move in constructor
+    dialog = new Dialog;
+    dialog->setFixedSize(333, 220);
 
     model = Model::getInstance(); //pass parameters or random them inside model
     controller = new Controller; //useless may be
@@ -53,7 +53,4 @@ void Widget::slotSelfBtnClicked() { //ctr
 
     p_autoGenBtn->setDisabled(true);
     p_selfGenBtn->setDisabled(true);
-    //file.open(QIODevice::ReadWrite);
-    //file.close();
-    //see the example in README.md
 }

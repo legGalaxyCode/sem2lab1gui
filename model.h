@@ -8,6 +8,8 @@
 #include<iostream>
 #include<vector>
 #include<utility>
+#include<random>
+#include<ctime>
 
 //using namespace std;
 
@@ -16,13 +18,19 @@ class Model //may not be inherite of QWidget
 {
 private:
     Model();
-    std::vector<std::vector<std::pair<int, int>>> graph; // my graph for example
+    const int M = rand() % 20 + 5;
+    const int K = rand() % 10 + 5;
+    const unsigned V = 1000000/M;
+    const unsigned long E = V * (K*K);
+    std::vector<std::vector<std::pair<int, int>>> graph{V}; // my graph for example, first = vertex, second = weight
     static Model* model;
 public:
     Model(Model& other) = delete;
     void operator=(const Model&) = delete;
     static Model* getInstance(); //pass args in constructor if needed
     ~Model(){};
+    std::vector<std::vector<std::pair<int, int>>> getGraph();
+    std::pair<unsigned, unsigned long> sizeGraph();
     void readGraphFromBinFile();
     void readGraphFromTxtFile();
     void generateGraph(); //pass N, M, graph

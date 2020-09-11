@@ -10,6 +10,8 @@
 #include<QDateTime>
 #include<QStringView>
 #include<QLayout>
+#include<QTextStream>
+#include<QMessageBox>
 #include<model.h>
 
 //no need to change
@@ -38,10 +40,6 @@ public:
 signals:
     void widgetClosed();
 private slots:
-    //foreach slot need to check of checkbox bin/txt type choose
-    //void slotDijkstraBtn();
-    //void slotBellmanFordBtn();
-    //void slotFloydUorshellBtn();
     void slotStartBtn();
 };
 

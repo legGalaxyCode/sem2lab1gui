@@ -9,7 +9,6 @@
 #include<model.h>
 #include<controller.h>
 
-//all slots in widget
 //no need to change
 
 class Widget : public QWidget //V part
