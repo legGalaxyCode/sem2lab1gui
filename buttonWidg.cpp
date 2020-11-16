@@ -1,3 +1,5 @@
+//no need to change
+
 #include<buttonWidg.h>
 
 Widget::Widget(QWidget* parent) : QWidget(parent) {
@@ -31,12 +33,16 @@ Widget::Widget(QWidget* parent) : QWidget(parent) {
 void Widget::slotAutoBtnClicked() {
     whichBtn = 0;
     dialog->setValid(whichBtn);
+
+    model->generateBoostGraph();
+
     dialog->show();
 
     connect(dialog, SIGNAL(widgetClosed()), this, SLOT(slotSetActiveGenBtn()));
 
     p_autoGenBtn->setDisabled(true);
     p_selfGenBtn->setDisabled(true);
+    //model->generateGraph();
 }
 
 void Widget::slotSetActiveGenBtn() {

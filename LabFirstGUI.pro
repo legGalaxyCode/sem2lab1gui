@@ -1,8 +1,9 @@
 QT       += core gui
+#QT += SDL2
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++14
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -20,6 +21,9 @@ HEADERS += \
     buttonWidg.h \
     controller.h \
     model.h
+
+LIBS += \
+        -lboost_system\
 
 FORMS +=
 

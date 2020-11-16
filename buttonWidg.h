@@ -1,15 +1,17 @@
 #ifndef BUTTONWIDG_H
 #define BUTTONWIDG_H
-#include<QObject>
-#include<QPushButton>
-#include<QLabel>
-#include<QLayout>
-#include<QWidget>
-#include<btnDialogWidget.h>
-#include<model.h>
-#include<controller.h>
+#include <QObject>
+#include <QPushButton>
+#include <QLabel>
+#include <QLayout>
+#include <QWidget>
+#include <btnDialogWidget.h>
+#include <model.h>
+#include <controller.h>
 
-//no need to change
+//second dialog widget header
+
+//no need to change if u wanna use this GUI
 
 class Widget : public QWidget //V part
 {
@@ -29,7 +31,7 @@ public:
 private slots:
     void slotSetActiveGenBtn();
     void slotAutoBtnClicked(); // - opens the dialog with choose of algorithm and file type
-    void slotSelfBtnClicked(); // - opens the document when graphs gen
+    void slotSelfBtnClicked(); // - opens the document when graph generated
 };
 
 #endif // BUTTONWIDG_H

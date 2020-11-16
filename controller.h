@@ -4,7 +4,9 @@
 //contains all signals and slots
 //no need to change
 
-#include<QWidget>
+//depricated
+
+#include <QWidget>
 
 class Controller : public QWidget
 {
